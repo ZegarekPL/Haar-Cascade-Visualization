@@ -15,16 +15,10 @@ def detect_face(img, faceCascade):
     coords, img = draw_boundary(img, faceCascade, 1.1, 10, color['blue'], "Face")
     return img
 
-faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-
-video_capture = cv2.VideoCapture(-1)
-
-while True:
-    _, image = video_capture.read()
-    image = detect_face(image, faceCascade)
-    cv2.imshow('Face detection', image)
-    if cv2.waitKey(1) & 0xFF == ord('q'):
-        break
-
-video_capture.release()
-cv2.destroyAllWindows()
+def resize_image(img, max_height=800):
+    height, width = img.shape[:2]
+    if height <= max_height:
+        return img
+    new_width = int(width * (max_height / height))
+    resized_img = cv2.resize(img, (new_width, max_height))
+    return resized_img
