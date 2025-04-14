@@ -4,7 +4,7 @@ from utils import detect_face
 
 faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
-video_capture = cv2.VideoCapture(-1)
+video_capture = cv2.VideoCapture(0)
 
 while True:
     _, image = video_capture.read()

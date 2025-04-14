@@ -6,9 +6,10 @@ def draw_boundary(img, classifier, scaleFactor, minNeighbors, color, text):
     coords = []
     for (x, y, w, h) in features:
         cv2.rectangle(img, (x, y), (x + w, y + h), color, 2)
-        cv2.putText(img, text, (x, y-4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
-        coords = [x, y, w, h]
+        cv2.putText(img, text, (x, y - 4), cv2.FONT_HERSHEY_SIMPLEX, 0.8, color, 1, cv2.LINE_AA)
+        coords.append((x, y, w, h))  # dodaj każdą twarz
     return coords, img
+
 
 def detect_face(img, faceCascade):
     color = {"blue":(255,0,0), "red":(0,0,255), "green":(0,255,0), "white":(255,255,255)}
@@ -22,3 +23,4 @@ def resize_image(img, max_height=800):
     new_width = int(width * (max_height / height))
     resized_img = cv2.resize(img, (new_width, max_height))
     return resized_img
+
