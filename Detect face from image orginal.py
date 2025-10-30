@@ -1,9 +1,14 @@
 import cv2
 from utils import resize_image, detect_face
 
-faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#faceCascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#faceCascade = cv2.CascadeClassifier('cascade50.xml')           # błąd
+#faceCascade = cv2.CascadeClassifier('cascade50_10stage.xml')   #
+#faceCascade = cv2.CascadeClassifier('cascade100.xml')          #
+#faceCascade = cv2.CascadeClassifier('cascade200.xml')          #
+faceCascade = cv2.CascadeClassifier('cascade200_inne.xml')      # inne zdjęcia
 
-image_path = 'test2.jpg'
+image_path = 'test4.jpeg'
 
 image = cv2.imread(image_path)
 
